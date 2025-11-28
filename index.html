@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARTEX - Camisetas que cuentan tu historia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="inicio">
+ 
+
+  <section class="hero">
+
+    <div class="hero-text">
+      <p class="hero-tag">Nuevo drop 2025 · ARTEX</p>
+      <h1>Camisetas que cuentan tu historia</h1>
+      <p class="hero-desc">
+        Diseños urbanos, música, psicodelia y más.<br>
+        Personaliza tu camiseta y conviértete en tu propia obra de arte.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#productos" class="btn btn-main">Ver colección</a>
+        <a href="#creador" class="btn btn-ghost">Crear mi camiseta</a>
+      </div>
+
+      <div class="hero-badges">
+        <span>Diseños originales</span>
+        <span>Hecho en Colombia</span>
+        <span>Personalización 100%</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <img src="images/psicodelia/hero.jpg" alt="Camiseta ARTEX" class="hero-img">
+
+        <div class="hero-floating hero-chip">
+          Urbano · Música · Arte
+        </div>
+
+        <div class="hero-floating hero-price">
+          Desde <strong>$50.000</strong> COP
+        </div>
+      </div>
+    </div>
+
+  </section>
+</header>
+
+ <nav class="navbar">
+    <div class="nav-left">
+      <img src="/images/logo/logo-artex.jpg" alt="Logo ARTEX" class="logo-img">
+      <span class="brand-sub">Imagina. Crea. Viste</span>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#productos">Colección</a></li>
+      <li><a href="#creador">Creador</a></li>
+
+      <li class="nav-cart">
+        <button class="cart-toggle" id="cart-toggle">
+          🛒 <span id="cart-count">0</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+<!-- PANEL CARRITO -->
+<aside id="cart-panel" class="cart-panel">
+  <h3>Tu carrito</h3>
+  <ul id="cart-items"></ul>
+  <p class="cart-total">Total: <span id="cart-total">$0</span></p>
+  <button id="cart-clear" class="btn btn-ghost btn-full">Vaciar carrito</button>
+  <button id="cart-checkout" class="btn btn-main" style="width: 100%; margin-top: 10px;">
+    Finalizar pedido
+  </button>
+</aside>
+
+<!-- MODAL PRODUCTO -->
+<div id="product-modal" class="product-modal">
+  <div id="product-modal-backdrop" class="product-modal-backdrop"></div>
+
+  <div class="product-modal-dialog">
+    <button id="product-modal-close" class="product-modal-close" aria-label="Cerrar">✕</button>
+
+    <div class="product-modal-img-wrap">
+      <img id="modal-product-img" src="" alt="Vista producto" class="product-modal-img">
+    </div>
+
+    <div class="product-modal-info">
+      <h3 id="modal-product-name"></h3>
+      <p id="modal-product-desc" class="product-modal-desc"></p>
+
+      <p class="product-modal-price">
+        Desde <span id="modal-product-price">$0</span>
+      </p>
+
+      <div class="modal-group">
+        <span class="modal-label">Tipo de camiseta</span>
+        <div class="modal-type-options">
+          <button class="type-btn modal-type-btn active" data-type="normal">Normal</button>
+          <button class="type-btn modal-type-btn" data-type="oversize">Oversize</button>
+        </div>
+      </div>
+
+      <div class="modal-group">
+        <span class="modal-label">Talla</span>
+        <div id="modal-size-options" class="size-options"></div>
+      </div>
+
+      <button id="modal-add-to-cart" class="btn btn-main btn-full">
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- CATEGORÍAS -->
+  <section id="categorias" class="section">
+    <div class="section-header">
+      <h2>Categorías</h2>
+      <p>Explora nuestras colecciones por estilo.</p>
+    </div>
+
+    <div class="category-buttons">
+      <button class="cat-btn active" data-filter="todos">Todos</button>
+      <button class="cat-btn" data-filter="urbano">Urbano</button>
+      <button class="cat-btn" data-filter="mujer">Mujer</button>
+      <button class="cat-btn" data-filter="hombre">Hombre</button>
+      <button class="cat-btn" data-filter="kids">Kids</button>
+      <button class="cat-btn" data-filter="musica">Música</button>
+      <button class="cat-btn" data-filter="psicodelia">Psicodelia</button>
+      <button class="cat-btn" data-filter="paratodos">Para todos</button>
+      <button class="cat-btn" data-filter="temporada">Temporada</button>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos" class="section">
+    <div class="section-header">
+      <h2>Colección destacada</h2>
+      <p>Algunas de las piezas que más piden en ARTEX.</p>
+    </div>
+
+    <div class="product-grid">
+      <!-- TODO: aquí van TODOS tus <article class="product-card"> tal cual los tenías -->
+      <!-- He dejado intacto todo tu listado de productos -->
+      <!-- ⬇️ Pega aquí exactamente todos los <article> que ya tenías (no los toqué) -->
+      <!-- Empieza en: Urbano Graffiti ... y termina en: 90's Vibe -->
+      <!-- Por espacio no los repito todos, pero puedes usar los mismos que me enviaste -->
+      <!-- ⚠ Importante: no borres las clases ni los data-name/data-price -->
+      <!-- (Tu HTML de productos ya estaba bien) -->
+      
+      <!-- 👉 Pega aquí todos tus <article class="product-card"> ... </article> originales -->
+      <article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-canserbero-front.jpg" class="product-img" alt="Urbano Canserbero">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Canserbero</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Canserbero" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-collage-front.jpg" class="product-img" alt="Urbano Collage">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Collage</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Collage" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-eminem-front.jpg" class="product-img" alt="Urbano Eminem">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Eminem</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Eminem" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-front.jpg" class="product-img" alt="Urbano">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-funkymonkey-front.jpg" class="product-img" alt="Urbano Funkymonkey">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Funkymonkey</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Funkymonkey" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-joker-front.jpg" class="product-img" alt="Urbano Joker">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Joker</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Joker" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-kinglion-front.jpg" class="product-img" alt="Urbano Kinglion">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Kinglion</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Kinglion" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-monkeycap-front.jpg" class="product-img" alt="Urbano Monkeycap">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Monkeycap</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Monkeycap" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-tokyostreet-front.jpg" class="product-img" alt="Urbano Tokyostreet">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Tokyostreet</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Tokyostreet" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-tupac-front.jpg" class="product-img" alt="Urbano Tupac">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Tupac</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Tupac" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="urbano">
+  <div class="product-img-wrap">
+    <img src="/images/urbano/urbano-vikingsbear-front.jpg" class="product-img" alt="Urbano Vikingsbear">
+    <span class="product-tag">Urbano</span>
+  </div>
+  <h3>Urbano Vikingsbear</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Urbano Vikingsbear" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_blessed_front.jpg" class="product-img" alt="Hombre Blessed">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Blessed</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Blessed" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_brooklyn_rules_front.jpg" class="product-img" alt="Hombre Brooklyn Rules">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Brooklyn Rules</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Brooklyn Rules" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_classic_front.jpg" class="product-img" alt="Hombre Classic">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Classic</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Classic" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_don_ramon_front.jpg" class="product-img" alt="Hombre Don Ramon">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Don Ramon</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Don Ramon" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_joker_why_so_serious_front.jpg" class="product-img" alt="Hombre Joker Why So Serious">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Joker Why So Serious</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Joker Why So Serious" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_love_corazon_front.jpg" class="product-img" alt="Hombre Love Corazon">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Love Corazon</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Love Corazon" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_reality_front.jpg" class="product-img" alt="Hombre Reality">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Reality</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Reality" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_renaissance_front.jpg" class="product-img" alt="Hombre Renaissance">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Renaissance</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Renaissance" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_rock_and_roll_front.jpg" class="product-img" alt="Hombre Rock And Roll">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Rock And Roll</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Rock And Roll" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="hombre">
+  <div class="product-img-wrap">
+    <img src="/images/hombre/hombre_sneakers_front.jpg" class="product-img" alt="Hombre Sneakers">
+    <span class="product-tag">Hombre</span>
+  </div>
+  <h3>Hombre Sneakers</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50,000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hombre Sneakers" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-90s-vibe-front.jpg" class="product-img" alt="Mujer 90S Vibe">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer 90S Vibe</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer 90S Vibe" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-hakuna-matata-front.jpg" class="product-img" alt="Mujer Hakuna Matata">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Hakuna Matata</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Hakuna Matata" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-journey-ride-front.jpg" class="product-img" alt="Mujer Journey Ride">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Journey Ride</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Journey Ride" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-mafalda-cansada-front.jpg" class="product-img" alt="Mujer Mafalda Cansada">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Mafalda Cansada</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Mafalda Cansada" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-mafalda-mecaesmal-front.jpg" class="product-img" alt="Mujer Mafalda Mecaesmal">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Mafalda Mecaesmal</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Mafalda Mecaesmal" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-mafalda-volar-front.jpg" class="product-img" alt="Mujer Mafalda Volar">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Mafalda Volar</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Mafalda Volar" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-no-wifi-front.jpg" class="product-img" alt="Mujer No Wifi">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer No Wifi</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer No Wifi" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-oveja-negra-front.jpg" class="product-img" alt="Mujer Oveja Negra">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Oveja Negra</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Oveja Negra" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-positive-proton-front.jpg" class="product-img" alt="Mujer Positive Proton">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Positive Proton</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Positive Proton" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<article class="product-card" data-category="mujer">
+  <div class="product-img-wrap">
+    <img src="/images/mujer/mujer-sunflower-roses-front.jpg" class="product-img" alt="Mujer Sunflower Roses">
+    <span class="product-tag">Mujer</span>
+  </div>
+  <h3>Mujer Sunflower Roses</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mujer Sunflower Roses" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-alegria-insideout-front.jpg" class="product-img" alt="Kids Alegria Insideout">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Alegria Insideout</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Alegria Insideout" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-astronaut-dab-front.jpg" class="product-img" alt="Kids Astronaut Dab">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Astronaut Dab</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Astronaut Dab" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-dino-skate-awesome-front.jpg" class="product-img" alt="Kids Dino Skate Awesome">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Dino Skate Awesome</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Dino Skate Awesome" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-dog-donut-unicorn-front.jpg" class="product-img" alt="Kids Dog Donut Unicorn">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Dog Donut Unicorn</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Dog Donut Unicorn" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-dog-heartglasses-front.jpg" class="product-img" alt="Kids Dog Heartglasses">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Dog Heartglasses</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Dog Heartglasses" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-jurassic-rex-front.jpg" class="product-img" alt="Kids Jurassic Rex">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Jurassic Rex</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Jurassic Rex" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-meow-cats-front.jpg" class="product-img" alt="Kids Meow Cats">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Meow Cats</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Meow Cats" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-monster-truck-front.jpg" class="product-img" alt="Kids Monster Truck">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Monster Truck</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Monster Truck" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-powerpuff-girls-front.jpg" class="product-img" alt="Kids Powerpuff Girls">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Powerpuff Girls</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Powerpuff Girls" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<article class="product-card" data-category="kids">
+  <div class="product-img-wrap">
+    <img src="/images/kids/kids-sonic-front.jpg" class="product-img" alt="Kids Sonic">
+    <span class="product-tag">Kids</span>
+  </div>
+  <h3>Kids Sonic</h3>
+  <p class="product-desc">Camiseta premium con diseño exclusivo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kids Sonic" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+<!-- MÚSICA — Music Lover -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-front.jpg" class="product-img" alt="Music Lover">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Music Lover</h3>
+  <p class="product-desc">Ritmo visual, guitarras, beats y actitud musical.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Music Lover" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — Beat Vibes -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica1-front.jpg" class="product-img" alt="Beat Vibes">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Beat Vibes</h3>
+  <p class="product-desc">Energía sonora convertida en diseño visual moderno.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Beat Vibes" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — KISS -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-kiss-front.jpg" class="product-img" alt="KISS">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>KISS — Edición Clásica</h3>
+  <p class="product-desc">Rock icónico, diseño fuerte para verdaderos fans.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="KISS — Edición Clásica" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — Charly García -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-charly-front.jpg" class="product-img" alt="Charly García">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Charly García</h3>
+  <p class="product-desc">Arte visual inspirado en el legendario músico argentino.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Charly García" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — Soda Stereo -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-sodastereo-front.jpg" class="product-img" alt="Soda Stereo">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Soda Stereo</h3>
+  <p class="product-desc">Diseño clásico homenajeando a una banda inmortal.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Soda Stereo" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — Ozzy Osbourne -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-ozzy-front.jpg" class="product-img" alt="Ozzy Osbourne">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Ozzy Osbourne</h3>
+  <p class="product-desc">Homenaje gráfico al príncipe de las tinieblas.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Ozzy Osbourne" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — AC/DC -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-acdc-front.jpg" class="product-img" alt="ACDC">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>AC/DC</h3>
+  <p class="product-desc">Highway to Hell. Energía pura del rock clásico.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="AC/DC" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — Kurt Cobain -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-kurt-front.jpg" class="product-img" alt="Kurt Cobain">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Kurt Cobain</h3>
+  <p class="product-desc">Estética grunge con vibra nostálgica y melancólica.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Kurt Cobain" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — U2 -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-u2-front.jpg" class="product-img" alt="U2">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>U2</h3>
+  <p class="product-desc">Diseño inspirado en una de las bandas más influyentes.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="U2" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- MÚSICA — Sabina -->
+<article class="product-card" data-category="musica">
+  <div class="product-img-wrap">
+    <img src="images/musica/musica-nitanjoven-front.jpg" class="product-img" alt="Sabina">
+    <span class="product-tag">Música</span>
+  </div>
+  <h3>Ni tan joven, ni tan viejo — Sabina</h3>
+  <p class="product-desc">Diseño minimalista inspirado en la leyenda española.</p>
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Ni tan joven, ni tan viejo — Sabina" data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+<!-- PARA TODOS — Music Colors -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-music-front.jpg" class="product-img" alt="Music Colors">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Music Colors — Para Todos</h3>
+  <p class="product-desc">Diseño musical colorido, moderno e inclusivo.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Music Colors — Para Todos"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Stronger Every Day -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-stronger-front.jpg" class="product-img" alt="Stronger Every Day">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Stronger Every Day</h3>
+  <p class="product-desc">Energía, disciplina y motivación para superarte a diario.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Stronger Every Day"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Possible -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-possible-front.jpg" class="product-img" alt="Possible">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Possible</h3>
+  <p class="product-desc">Inspiración diaria: lo imposible solo tarda un poco más.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Possible"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Life Is Better With Coffee -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-coffee-front.jpg" class="product-img" alt="Life Is Better With Coffee">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Life Is Better With Coffee</h3>
+  <p class="product-desc">Para los amantes del café y la buena energía.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Life Is Better With Coffee"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Peace Sign -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-peace-front.jpg" class="product-img" alt="Peace Sign">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Peace Sign</h3>
+  <p class="product-desc">Minimalista, relajado y con vibra positiva.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Peace Sign"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Never Stop Dreaming -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-dream-front.jpg" class="product-img" alt="Never Stop Dreaming">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Never Stop Dreaming</h3>
+  <p class="product-desc">Sueña en grande, siempre. Nunca frenes tu imaginación.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Never Stop Dreaming"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Fail But Never Quit -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-failnequit-front.jpg" class="product-img" alt="Fail But Never Quit">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Fail But Never Quit</h3>
+  <p class="product-desc">Falla, aprende, continúa. Estilo y actitud.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Fail But Never Quit"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- PARA TODOS — Never Give Up -->
+<article class="product-card" data-category="paratodos">
+  <div class="product-img-wrap">
+    <img src="images/para_todos/paratodos-nevergiveup-front.jpg" class="product-img" alt="Never Give Up">
+    <span class="product-tag">Para todos</span>
+  </div>
+
+  <h3>Never Give Up</h3>
+  <p class="product-desc">Determinación y fuerza en un diseño limpio.</p>
+
+  <div class="product-bottom">
+    <span class="product-price" data-price="50000">$50.000</span>
+    <button class="btn btn-secondary add-to-cart"
+      data-name="Never Give Up"
+      data-price="50000">
+      Añadir al carrito
+    </button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Cerveza Navidad -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-cerveza-navidad-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Cerveza Navidad</h3>
+  <p class="product-desc">Navidad divertida al estilo ARTEX.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Cerveza Navidad" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Cheer Beer Black -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-cheerbeer-black-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Cheer Beer Black</h3>
+  <p class="product-desc">Celebra con estilo y actitud.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Cheer Beer Black" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Grinch Dab -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-grinch-dab-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Grinch Dab</h3>
+  <p class="product-desc">Humor navideño con el mejor estilo.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Grinch Dab" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Ho Ho Ho -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-hohoho-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Ho Ho Ho</h3>
+  <p class="product-desc">Siente el espíritu navideño con estilo.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Ho Ho Ho" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Merry Hat Green -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-merryhat-green-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Merry Hat Green</h3>
+  <p class="product-desc">Un toque navideño moderno.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Merry Hat Green" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Neon Trees Black -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-neontrees-black-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Neon Trees Black</h3>
+  <p class="product-desc">Luces festivas con estilo urbano.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Neon Trees Black" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Olaf Red -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-olaf-red-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Olaf Red</h3>
+  <p class="product-desc">Diversión helada para todos.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Olaf Red" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Snowman -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-snowman-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Snowman</h3>
+  <p class="product-desc">Un muñeco de nieve con mucho estilo.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Snowman" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- TEMPORADA — Santa Bubblegum -->
+<article class="product-card" data-category="temporada">
+  <div class="product-img-wrap">
+    <img src="/images/temporada/temporada-santa-bubblegum-front.jpg" class="product-img">
+    <span class="product-tag">Temporada</span>
+  </div>
+  <h3>Santa Bubblegum</h3>
+  <p class="product-desc">Santa con actitud divertida.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Santa Bubblegum" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+<!-- PSICODELIA — Alien Happy -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-alien-happy-front.jpg" class="product-img" alt="Alien Happy">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Alien Happy</h3>
+  <p class="product-desc">Vibra cósmica y colores intensos.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Alien Happy" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Aliens Rainbow -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-aliens-rainbow-front.jpg" class="product-img" alt="Aliens Rainbow">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Aliens Rainbow</h3>
+  <p class="product-desc">Explosión de color y energía espacial.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Aliens Rainbow" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Bloom Skull -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-bloom-skull-front.jpg" class="product-img" alt="Bloom Skull">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Bloom Skull</h3>
+  <p class="product-desc">Calaveras florales en estilo psicodélico.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Bloom Skull" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Eye Vision -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-eye-front.jpg" class="product-img" alt="Eye Vision">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Eye Vision</h3>
+  <p class="product-desc">Energía espiritual y visual intensa.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Eye Vision" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Gamer Trip -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-gamer-front.jpg" class="product-img" alt="Gamer Trip">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Gamer Trip</h3>
+  <p class="product-desc">Píxeles, colores y energía gamer psicodélica.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Gamer Trip" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Hippie Mushroom -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-hippie-mushroom-front.jpg" class="product-img" alt="Hippie Mushroom">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Hippie Mushroom</h3>
+  <p class="product-desc">Hongos vibrantes en estilo retro-hippie.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Hippie Mushroom" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Mushroom Eye -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-mushroom-eye-front.jpg" class="product-img" alt="Mushroom Eye">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Mushroom Eye</h3>
+  <p class="product-desc">El ojo que todo lo ve en un viaje psicodélico.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mushroom Eye" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Mushroom Tree -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-mushroom-tree-front.jpg" class="product-img" alt="Mushroom Tree">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Mushroom Tree</h3>
+  <p class="product-desc">Naturaleza surrealista y brillante.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Mushroom Tree" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Psychonaut -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-psychonaut-front.jpg" class="product-img" alt="Psychonaut">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Psychonaut</h3>
+  <p class="product-desc">Viaje mental en colores y energía visual.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Psychonaut" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+<!-- PSICODELIA — Smiley Trip -->
+<article class="product-card" data-category="psicodelia">
+  <div class="product-img-wrap">
+    <img src="images/psicodelia/psico-smiley-front.jpg" class="product-img" alt="Smiley Trip">
+    <span class="product-tag">Psicodelia</span>
+  </div>
+  <h3>Smiley Trip</h3>
+  <p class="product-desc">Sonrisa psicodélica para vibrar alto.</p>
+  <div class="product-bottom">
+    <span class="product-price">$50.000</span>
+    <button class="btn btn-secondary add-to-cart" data-name="Smiley Trip" data-price="50000">Añadir al carrito</button>
+  </div>
+</article>
+
+    </div>
+  </section>
+
+
+  <!-- CREADOR DE CAMISETAS -->
+  <section id="creador" class="section section-alt">
+    <div class="section-header">
+      <h2>Crea tu camiseta</h2>
+      <p>Sube tu diseño, muévelo, cambia tamaño, rota y elige color, tipo y talla.</p>
+    </div>
+
+    <div class="creator-layout">
+
+      <!-- PREVIEW IZQUIERDA -->
+      <div class="creator-preview">
+        <div id="creator-canvas" class="creator-canvas">
+          <!-- Mockup frente/espalda -->
+          <img
+            id="creator-mockup"
+            class="creator-mockup"
+            src="/images/camiseta/camiseta-frente.jpg"
+            data-front="/images/camiseta/camiseta-frente.jpg"
+            data-back="/images/camiseta/camiseta-espalda.jpg"
+            alt="Camiseta"
+          >
+
+          <!-- Capa de color que se recorta con la camiseta -->
+          <div id="creator-tint" class="creator-tint"></div>
+
+          <!-- Diseño del usuario -->
+          <img
+            id="creator-design"
+            class="creator-design"
+            src=""
+            alt="Diseño"
+            style="display:none;"
+          >
+        </div>
+
+        <div class="creator-preview-actions">
+          <button id="creator-side-toggle" type="button" class="btn btn-secondary">
+            Ver espalda
+          </button>
+          <button id="creator-center" type="button" class="btn btn-ghost">
+            Centrar diseño
+          </button>
+          <button id="creator-clear" type="button" class="btn btn-ghost">
+            Quitar diseño
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTROLES DERECHA -->
+      <div class="creator-controls">
+
+        <div class="creator-card">
+          <h3>Diseño</h3>
+
+          <label class="creator-field">
+            <span>Sube tu imagen (PNG / JPG)</span>
+            <input id="creator-upload" type="file" accept="image/*">
+          </label>
+
+          <label class="creator-field">
+            <span>Tamaño del diseño</span>
+            <input id="creator-scale" type="range" min="0.4" max="2" step="0.01" value="1">
+          </label>
+
+          <label class="creator-field">
+            <span>Rotación del diseño</span>
+            <div class="creator-row">
+              <input id="creator-rotate" type="range" min="-180" max="180" value="0">
+              <span id="creator-rotate-label" class="creator-rotate-label">0°</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="creator-card">
+          <h3>Detalles de la camiseta</h3>
+
+          <label class="creator-field">
+            <span>Color de la camiseta</span>
+            <input id="creator-color" type="color" value="#ffffff">
+          </label>
+
+          <label class="creator-field">
+            <span>Tipo de camiseta</span>
+            <select id="creator-type">
+              <option value="normal" selected>Normal</option>
+              <option value="oversize">Oversize</option>
+            </select>
+          </label>
+
+          <label class="creator-field">
+            <span>Talla</span>
+            <select id="creator-size">
+              <option value="" disabled selected>Selecciona talla</option>
+            </select>
+          </label>
+
+          <p class="hint-text">
+            Precio fijo: <strong>$60.000 COP</strong>
+          </p>
+
+          <button id="creator-add-cart" class="btn btn-main btn-full" type="button">
+            Añadir esta camiseta al carrito
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram" class="section">
+    <div class="section-header">
+      <h2>Síguenos en Instagram</h2>
+      <p>Mira diseños, drops y contenido exclusivo.</p>
+    </div>
+
+    <div class="social-links">
+      <a href="https://instagram.com/artex1025"
+        target="_blank"
+        class="social-icon instagram">
+        @artex1025
+      </a>
+    </div>
+  </section>
+
+</main>
+
+ 
+
+<footer class="footer">
+  <p>&copy; 2025 ARTEX · Arte para vestir · Todos los derechos reservados.</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="script.js"></script>
+<script src="creator.js"></script>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/573128945622?text=Hola%20quiero%20información%20sobre%20las%20camisetas%20Artex"
+   class="whatsapp-btn"
+   target="_blank"
+   rel="noopener">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp">
+</a>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+
+
+});
+</script>
+<!-- MODAL ZOOM IMAGEN -->
+<div id="zoom-modal" class="zoom-modal">
+  <div class="zoom-backdrop"></div>
+
+  <div class="zoom-dialog">
+    <button id="zoom-close" class="zoom-close">✕</button>
+    <img id="zoom-img" src="" alt="Imagen ampliada">
+  </div>
+</div>
+<!-- BOTÓN FLOTANTE DE CARRITO (solo móvil) -->
+<button id="cart-toggle-floating" class="cart-floating">
+  🛒 <span id="cart-count-floating">0</span>
+</button>
+
+</body>
+</html>

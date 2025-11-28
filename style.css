@@ -1,0 +1,2203 @@
+/* RESET BÁSICO */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1a1f3b 0, #05060a 55%);
+  color: #f5f5f5;
+}
+
+/* GENERALES */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.section {
+  padding: 60px 20px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-alt {
+  background: radial-gradient(circle at top, #15182c 0, #05060a 60%);
+  border-top: 1px solid rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section-header p {
+  color: #a0a3c7;
+  margin-top: 8px;
+}
+
+/* NAVBAR */
+.site-header {
+  position: relative;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(90deg, rgba(5,6,10,0.95), rgba(10,8,24,0.95));
+  border-bottom: 1px solid #272a40;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 80px;
+}
+
+.brand-sub {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #b49cff;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  color: #dfe0ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6ec7, #b49cff);
+  transition: width 0.2s ease;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+/* BOTÓN NAV TOGGLE (MÓVIL) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.is-open span:first-child {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:last-child {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+/* CARRITO BOTÓN */
+.cart-toggle {
+  background: #1b1e2b;
+  border-radius: 999px;
+  border: 1px solid #343754;
+  color: #e0e0ff;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* HERO */
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.hero-tag {
+  color: #a0a3c7;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 3vw + 1rem, 3rem);
+  margin: 12px 0;
+}
+
+.hero-desc {
+  color: #c3c6ff;
+  max-width: 480px;
+  margin-bottom: 18px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.75rem;
+}
+
+.hero-badges span {
+  border-radius: 999px;
+  border: 1px solid #343754;
+  padding: 4px 10px;
+  color: #a0a3c7;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-card {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.7);
+}
+
+.hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.hero-floating {
+  position: absolute;
+  z-index: 5;      /* Para que quede dentro pero arriba */
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(5,6,10,0.8);
+  color: #e3e3ff;
+  border: 1px solid rgba(180,156,255,0.5);
+  backdrop-filter: blur(10px);
+}
+
+
+.hero-chip {
+  top: 12px;
+  left: 12px;
+}
+
+.hero-price {
+  bottom: 12px;
+  right: 12px;
+}
+
+/* BOTONES */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.btn-main {
+  background: linear-gradient(135deg, #ff6ec7, #b49cff);
+  color: #05060a;
+}
+
+.btn-main:hover {
+  filter: brightness(1.05);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #e0e0ff;
+  border: 1px solid #343754;
+}
+
+.btn-ghost:hover {
+  background: #111320;
+}
+
+.btn-secondary {
+  background: #111320;
+  color: #f5f5f5;
+  border: 1px solid #343754;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* CATEGORÍAS */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cat-btn {
+  background: #111320;
+  border-radius: 999px;
+  border: 1px solid #343754;
+  color: #e0e0ff;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cat-btn.active {
+  background: #b49cff;
+  color: #05060a;
+}
+
+/* PRODUCTOS */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.product-card {
+  background: #0b0d18;
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid #262943;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-img-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-img-wrap img {
+  height: 210px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-tag {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: rgba(5,6,10,0.8);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(180,156,255,0.6);
+}
+
+.product-desc {
+  color: #a0a3c7;
+  font-size: 0.9rem;
+}
+
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.product-price {
+  color: #b49cff;
+  font-weight: 600;
+}
+
+/* CREADOR */
+.creator-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+}
+
+.creator-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.shirt-frame {
+  width: 260px;
+  height: 320px;
+  border-radius: 28px;
+  background: radial-gradient(circle at top, #262943 0, #05060a 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.shirt-base {
+  width: 190px;
+  height: 240px;
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+.shirt-text {
+  position: absolute;
+  max-width: 160px;
+  text-align: center;
+  font-weight: 700;
+  color: #111111;
+}
+
+.creator-controls {
+  background: #0b0d18;
+  border-radius: 18px;
+  border: 1px solid #262943;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.creator-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.creator-controls input[type="text"],
+.creator-controls select,
+.creator-controls input[type="color"],
+.creator-controls input[type="range"] {
+  background: #05060a;
+  border: 1px solid #343754;
+  color: #f5f5f5;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+/* CONTACTO */
+.contact-form {
+  max-width: 420px;
+  margin: 0 auto 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #05060a;
+  border: 1px solid #343754;
+  color: #f5f5f5;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.contact-form textarea {
+  min-height: 80px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 0.85rem;
+  color: #8e92b3;
+  border-top: 1px solid #1b1e2b;
+}
+
+/* CARRITO PANEL */
+.cart-panel {
+  position: fixed;
+  right: 16px;
+  top: 80px;
+  width: 260px;
+  background: #111320;
+  border: 1px solid #343754;
+  border-radius: 12px;
+  padding: 14px;
+  display: none;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  z-index: 30;
+}
+
+.cart-panel h3 {
+  margin-top: 0;
+}
+
+.cart-panel ul {
+  list-style: none;
+  padding-left: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.cart-panel li {
+  margin-bottom: 6px;
+}
+
+/* WHATSAPP */
+.whatsapp {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #25D366;
+  color: #05060a;
+  border-radius: 999px;
+  padding: 8px 14px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin: 0 auto 18px;
+  }
+
+  .hero-badges {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .creator-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding-inline: 16px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 64px;
+    background: #05060a;
+    flex-direction: column;
+    padding: 16px 20px 20px;
+    gap: 14px;
+    transform: translateY(-130%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+  }
+
+  .nav-menu.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-cart {
+    align-self: flex-start;
+  }
+}
+/* BOTONES FIJOS EN EL CARRITO (móvil + escritorio) */
+.cart-panel {
+  position: fixed;
+  right: 16px;
+  top: 80px;
+  width: 260px;
+  background: #111320;
+  border: 1px solid #343754;
+  border-radius: 12px;
+  padding: 14px;
+  display: none;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  z-index: 30;
+}
+/* MODAL PRODUCTO */
+.product-modal {
+  position: fixed;
+  inset: 0;
+  display: none;               /* se activa con .is-open */
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.product-modal.is-open {
+  display: flex;
+}
+
+.product-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.product-modal-dialog {
+  position: relative;
+  background: #05060a;
+  border-radius: 20px;
+  border: 1px solid #343754;
+  padding: 18px;
+  max-width: 850px;
+  width: 92%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  z-index: 41;
+}
+
+.product-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: #f5f5f5;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.product-modal-img-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #262943;
+}
+
+.product-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-modal-info h3 {
+  margin-bottom: 6px;
+}
+
+.product-modal-desc {
+  color: #a0a3c7;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.product-modal-price {
+  font-weight: 600;
+  color: #b49cff;
+  margin-bottom: 14px;
+}
+
+.modal-group {
+  margin-bottom: 12px;
+}
+
+.modal-label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a0a3c7;
+  margin-bottom: 6px;
+}
+
+/* Botones tipo (Normal / Oversize) */
+.modal-type-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.type-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #343754;
+  background: #111320;
+  color: #e0e0ff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.type-btn.active {
+  background: #b49cff;
+  color: #05060a;
+}
+
+/* Tallas */
+.size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.size-btn {
+  min-width: 40px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #343754;
+  background: #111320;
+  color: #e0e0ff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.size-btn.active {
+  background: #ff6ec7;
+  color: #05060a;
+  border-color: #ff6ec7;
+}
+
+.size-btn.disabled {
+  opacity: 0.4;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Responsive modal */
+@media (max-width: 800px) {
+  .product-modal-dialog {
+    grid-template-columns: 1fr;
+  }
+}
+/* --- CAMBIO DE IMAGEN FRENTE ↔ ESPALDA --- */
+.product-card .product-img-wrap {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Segunda imagen (espalda) */
+.product-card .product-img-back {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* Hover en PC */
+@media (hover: hover) {
+  .product-card:hover .product-img-back {
+    opacity: 1;
+  }
+  .product-card:hover .product-img {
+    opacity: 0;
+  }
+}
+/* Ocultar la tarjeta del hero (el "banner" de la derecha) */
+.hero-visual {
+  display: none;
+}
+
+/* =============== MODAL DE IMAGEN =============== */
+
+.product-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-modal.open {
+  display: flex;
+}
+
+.product-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.product-modal-backdrop.open {
+  opacity: 1;
+}
+
+.product-modal-dialog {
+  position: relative;
+  background: #111320;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  animation: zoomIn 0.25s ease;
+}
+
+.product-modal-img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.product-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* =============================
+   MODAL DE AMPLIACIÓN DE IMAGEN
+   ============================= */
+
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-modal.is-open {
+  display: flex;
+}
+
+.img-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+}
+
+.img-modal-dialog {
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  animation: zoomIn 0.25s ease;
+}
+
+.img-modal-dialog img {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #343754;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #111320;
+  color: #fff;
+  border: 1px solid #343754;
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ========= MODAL DE IMAGEN AMPLIADA ========= */
+
+.img-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.img-modal.is-open {
+  display: flex;
+}
+
+.img-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+}
+
+.img-modal-dialog {
+  position: relative;
+  background: #111320;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  z-index: 10000;
+  animation: zoomIn 0.25s ease;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+#img-modal-img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* INSTAGRAM */
+.social-links {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.social-icon.instagram {
+  display: inline-block;
+  background: #E1306C;
+  padding: 10px 22px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.social-icon.instagram:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+/* WHATSAPP FLOTANTE NUEVO */
+.whatsapp-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 64px;
+  height: 64px;
+  background: #25D366;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+  transition: transform .2s ease;
+}
+
+.whatsapp-btn img {
+  width: 34px;
+  height: 34px;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.08);
+}
+/* ======================================
+   NUEVO SISTEMA DE CAMISETA REALISTA
+   ====================================== */
+
+.shirt-frame {
+  position: relative;
+  width: 260px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shirt-mockup {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+/* Capa de color que se mezcla con la camiseta */
+#shirt-color-layer {
+  position: absolute;
+  inset: 0;
+  background-color: #ffffff;
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Texto superpuesto */
+.shirt-text {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+  max-width: 160px;
+  color: black;
+  pointer-events: none;
+}
+/* ==========================================
+   IMAGEN SUBIDA POR EL USUARIO (DRAG + RESIZE)
+   ========================================== */
+
+#shirt-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4; /* encima del texto */
+  pointer-events: none; /* controlado por cada elemento */
+}
+
+/* Cada imagen insertada se envuelve en este elemento */
+.draggable-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  transform: translate(-50%, -50%);
+  cursor: move;
+  pointer-events: auto;
+}
+
+/* La imagen interna */
+.draggable-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 4px;
+}
+
+/* Manija para redimensionar */
+.resize-handle {
+  width: 16px;
+  height: 16px;
+  background: #ff6ec7;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  cursor: se-resize;
+  z-index: 10;
+}
+
+
+/* ==== CREADOR MEJORADO ARTEX ==== */
+
+.creator-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .creator-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.creator-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.shirt-frame {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  aspect-ratio: 3/4;
+  padding: 16px;
+  border-radius: 22px;
+  background: radial-gradient(circle at top, #1f2937, #020617);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+/* 3D flip */
+.shirt-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.shirt-3d.rotated {
+  transform: rotateY(180deg);
+}
+
+.shirt-side {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shirt-side.shirt-back {
+  transform: rotateY(180deg);
+}
+
+.shirt-mockup {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Capa de color */
+#shirt-color-layer {
+  position: absolute;
+  inset: 20px;
+  border-radius: 16px;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+}
+
+/* Guías */
+.guide {
+  position: absolute;
+  background: rgba(96, 165, 250, 0.9);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 2;
+}
+
+#guide-x {
+  left: 50%;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+#guide-y {
+  top: 50%;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.guide.visible {
+  opacity: 1;
+}
+
+/* Elementos arrastrables */
+.draggable {
+  position: absolute;
+  cursor: grab;
+  z-index: 5;
+  user-select: none;
+}
+
+.draggable.dragging {
+  cursor: grabbing;
+}
+
+/* Texto en la camiseta */
+.shirt-text {
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 70%;
+  line-height: 1.15;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Imagen personalizada */
+#shirt-image-container img {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  transform: translate(-50%, -50%);
+  max-width: 40%;
+  z-index: 4;
+  cursor: grab;
+}
+
+/* Panel de controles */
+.creator-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.creator-card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.creator-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: #e5e7eb;
+}
+
+.creator-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.creator-card input[type="text"],
+.creator-card select,
+.creator-card input[type="color"] {
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+}
+
+.creator-card input[type="range"] {
+  width: 100%;
+}
+
+.text-style-row {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.mini-btn {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: #020617;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.mini-btn:hover {
+  background: #111827;
+}
+
+.mini-btn.active {
+  background: #f97316;
+  border-color: #fb923c;
+  color: #020617;
+}
+
+.mini-btn-danger {
+  border-color: #f87171;
+  color: #fecaca;
+}
+
+.mini-select {
+  padding: 0.25rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.78rem;
+}
+
+.preset-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.preset-btn {
+  flex: 1 1 auto;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.9);
+  background: #020617;
+  color: #bfdbfe;
+  cursor: pointer;
+}
+
+.preset-btn:hover {
+  background: rgba(37, 99, 235, 0.4);
+}
+
+/* Área de preview acciones */
+.creator-preview-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.design-output {
+  width: 100%;
+  min-height: 80px;
+  font-size: 0.75rem;
+  border-radius: 10px;
+  border: 1px dashed rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.75);
+  color: #e5e7eb;
+  padding: 0.5rem 0.7rem;
+  resize: vertical;
+}
+
+.hint-text {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* ================================
+   CREADOR SIMPLE ARTEX (solo imagen)
+   ================================ */
+
+#creador .creator-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+#creador .creator-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+#creador .shirt-frame {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  border-radius: 22px;
+  background: radial-gradient(circle at top, #1f2937, #020617);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#creador .shirt-mockup {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Contenedor donde van los diseños */
+#shirt-image-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* cada imagen internamente sí tendrá pointer-events */
+}
+
+/* Imagen incrustada (wrapper) */
+.draggable-image {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  width: 120px;
+  cursor: move;
+  pointer-events: auto;
+}
+
+.draggable-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 4px;
+}
+
+/* Manija para redimensionar */
+.resize-handle {
+  width: 16px;
+  height: 16px;
+  background: #ff6ec7;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  cursor: se-resize;
+  z-index: 10;
+}
+
+/* Panel derecho */
+#creador .creator-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#creador .creator-card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+#creador .creator-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  color: #e5e7eb;
+}
+
+#creador .creator-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+#creador .creator-card input[type="file"],
+#creador .creator-card input[type="range"],
+#creador .creator-card select {
+  background: #05060a;
+  border-radius: 8px;
+  border: 1px solid #343754;
+  color: #f5f5f5;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+}
+
+#creador .creator-card input[type="range"] {
+  padding: 0;
+}
+
+.hint-text {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Botón girar camiseta */
+#rotate-shirt {
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #creador .creator-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  #creador .creator-controls {
+    width: 100%;
+  }
+
+  #creador .creator-preview {
+    order: -1; /* preview arriba en móvil */
+  }
+}
+/* ==== CREADOR CANVA-LIKE ==== */
+
+/* Imagen seleccionada */
+.draggable-image.active {
+  outline: 2px dashed #ff6ec7;
+  outline-offset: 2px;
+}
+
+/* Fila para slider de rotación + ángulo */
+.rotation-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#rotation-angle-label {
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  min-width: 36px;
+}
+
+/* Acciones de centrado y capas */
+.creator-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 6px;
+}
+
+.creator-inline-actions .btn {
+  flex: 1 1 auto;
+  padding-inline: 10px;
+}
+
+/* Suavidad ligera al redimensionar/rotar (sin lag) */
+.draggable-image {
+  transition: width 0.08s linear, transform 0.08s linear;
+}
+.shirt-frame {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#shirt-color-layer {
+  position: absolute;
+  inset: 0;
+  background-color: #ffffff;
+  z-index: 2; /* color encima del fondo */
+}
+
+.shirt-mockup {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 3; /* camiseta encima del color */
+}
+
+.user-design {
+  position: absolute;
+  width: 120px;
+  cursor: grab;
+  z-index: 4; /* diseño encima de todo */
+}
+
+
+.creator-controls {
+  width: 300px;
+}
+
+.creator-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+/* ==========================
+   CREADOR DE CAMISETAS NUEVO
+========================== */
+
+#creador .creator-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#creador .creator-preview {
+  flex: 0 0 auto;
+}
+
+#creador .creator-controls {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.creator-canvas {
+  position: relative;
+  width: 320px;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  border: 2px solid #e0e0e0;
+  background: #f7f7f7;
+  overflow: hidden;
+}
+
+.creator-mockup {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Capa de color que se recorta con la forma de la camiseta */
+.creator-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: #ffffff;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+
+  /* El recorte específico lo manejamos desde JS con mask-image */
+}
+
+.creator-design {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%) translate(0px, 0px) rotate(0deg) scale(1);
+  transform-origin: center center;
+  z-index: 3;
+  cursor: grab;
+}
+
+.creator-preview-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.creator-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+.creator-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.creator-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.creator-field input[type="file"],
+.creator-field select,
+.creator-field input[type="color"],
+.creator-field input[type="range"] {
+  max-width: 100%;
+}
+
+.creator-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.creator-rotate-label {
+  min-width: 3ch;
+  text-align: right;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #creador .creator-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #creador .creator-controls {
+    width: 100%;
+    max-width: 360px;
+  }
+}.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.img-modal.open {
+  display: flex;
+}
+
+.img-modal-dialog {
+  padding: 20px;
+  border-radius: 14px;
+  background: #fff;
+  max-width: 700px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-modal-dialog img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 22px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+/* 🖼️ Modal de imagen */
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.img-modal img {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 500px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* MODAL PARA ZOOM DE IMAGEN */
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.img-modal.open {
+  display: flex;
+}
+
+.img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+/* ========= MODAL ZOOM IMAGEN ========= */
+.img-modal {
+  position: fixed;
+  inset: 0;
+  display: none;              /* Oculto por defecto */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.8); /* Fondo oscuro */
+  z-index: 9999;
+}
+
+.img-modal.open {
+  display: flex;              /* Se muestra cuando JS agrega .open */
+}
+
+.img-modal-dialog {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
+}
+
+#img-modal-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: block;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+/* MODAL ZOOM */
+.zoom-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  padding: 20px;
+}
+
+.zoom-modal.open {
+  display: flex;
+}
+
+.zoom-dialog {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#zoom-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.zoom-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.zoom-backdrop {
+  position: absolute;
+  inset: 0;
+}
+/* =====================================================
+   🟣 CARRITO FLOTANTE - ESTILO A (PREMIUM GLASS + GLOW)
+   ⇒ ESTE ES EL ESTILO ACTIVO
+   ===================================================== */
+@media (max-width: 768px) {
+  #cart-toggle {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 26px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
+    /* borde + brillo elegante */
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 4px 14px rgba(0,0,0,0.35),
+      0 0 12px rgba(255, 0, 255, 0.4);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #cart-toggle:hover {
+    transform: scale(1.08);
+    box-shadow:
+      0 4px 14px rgba(0,0,0,0.35),
+      0 0 18px rgba(255, 0, 255, 0.55);
+  }
+
+  /* Burbuja del contador */
+  #cart-toggle span {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ff2d6f;
+    color: white;
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  /* animación bump (cuando se añade producto) */
+  #cart-toggle.cart-bump {
+    animation: bump 0.4s ease;
+  }
+}
+
+/* =====================================================
+   🔵 ESTILO B – NEÓN ARTEX (DESACTIVADO)
+   ⇒ Solo actívalo si algún día quieres usarlo.
+   ===================================================== */
+/*
+@media (max-width: 768px) {
+  #cart-toggle {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #7d16ff;
+    color: white;
+    font-size: 26px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow:
+      0 0 12px #7d16ff,
+      0 0 24px rgba(125, 22, 255, 0.7),
+      0 4px 10px rgba(0,0,0,0.4);
+    animation: neonPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes neonPulse {
+    0% { box-shadow: 0 0 12px #7d16ff; }
+    50% { box-shadow: 0 0 24px #bb68ff; }
+    100% { box-shadow: 0 0 12px #7d16ff; }
+  }
+
+  #cart-toggle span {
+    background: #ff005e;
+    width: 20px;
+    height: 20px;
+    top: -6px;
+    right: -6px;
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #cart-toggle.cart-bump {
+    animation: bump 0.4s ease;
+  }
+}
+*/
+
+/* =====================================================
+   🟢 ESTILO C – MINIMALISTA WHATSAPP (DESACTIVADO)
+   ⇒ Lo puedes activar cuando quieras.
+   ===================================================== */
+/*
+@media (max-width: 768px) {
+  #cart-toggle {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    width: 58px;
+    height: 58px;
+    background: white;
+    color: black;
+    font-size: 26px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease;
+  }
+
+  #cart-toggle:hover {
+    transform: scale(1.08);
+  }
+
+  #cart-toggle span {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    background: #ff3333;
+    color: white;
+    border-radius: 50%;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  #cart-toggle.cart-bump {
+    animation: bump 0.4s ease;
+  }
+}
+*/
+
+/* =====================================================
+   ANIMACIÓN BUMP (COMÚN A TODOS LOS ESTILOS)
+   ===================================================== */
+@keyframes bump {
+  0%   { transform: scale(1); }
+  20%  { transform: scale(1.25); }
+  50%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+/* ================================================
+   BOTÓN FLOTANTE PARA MÓVIL
+   ================================================ */
+
+@media (max-width: 768px) {
+
+  /* Ocultar el carrito del menú en móvil */
+  .nav-cart { display: none !important; }
+
+  /* Estilo Premium Glass */
+  #cart-toggle-floating {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 28px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 4px 14px rgba(0,0,0,0.35),
+      0 0 12px rgba(255, 0, 255, 0.4);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+#cart-toggle-floating {
+  position: fixed;
+  bottom: 90px;   /* <-- Antes 15px, ahora sube por encima del WhatsApp */
+  right: 20px;
+  z-index: 9999;
+  background: #111;
+  color: #fff;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+}
+#main-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #fff; /* o tu color actual */
+  transition: transform 0.25s ease;
+}
+
+#main-navbar.hide-header {
+  transform: translateY(-100%);
+}
+@media (max-width: 768px) {
+  .hero-actions {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-actions .btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-visual,
+  .hero-text {
+    text-align: center !important;
+  }
+}
+/* ============================
+   CREADOR - MOCKUP FIJO EN MÓVIL
+   ============================ */
+@media (max-width: 768px) {
+
+  /* Mantener la camiseta siempre en vista */
+  .creator-preview {
+    position: sticky;
+    top: 80px;  /* ajusta según la altura real de tu navbar */
+    background: #05060a;
+    z-index: 30;
+    padding: 10px 0 14px 0;
+  }
+
+  /* Reducir un poco la camiseta en móvil para que entre mejor */
+  .creator-canvas {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  /* Desplazar controles hacia abajo */
+  .creator-controls {
+    margin-top: 20px;
+  }
+}
+/* ============================================
+   CARRITO OPTIMIZADO PARA LA SECCIÓN CREADOR
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* Cuando estamos en la sección creador */
+  #creador #cart-toggle-floating,
+  #creador #cart-toggle {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    bottom: auto !important;
+
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 22px !important;
+
+    background: rgba(0,0,0,0.6) !important;
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    z-index: 9999 !important;
+  }
+
+}
