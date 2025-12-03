@@ -2196,8 +2196,43 @@ h1, h2, h3 {
     border: 1px solid rgba(255,255,255,0.3);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    
 
     z-index: 9999 !important;
   }
 
+}
+/* Contenedor de capas dentro del área de la camiseta */
+.creator-canvas {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor que agrupa todas las capas de diseño */
+.creator-layers {
+  position: absolute;
+  inset: 0;            /* ocupa todo el canvas */
+  pointer-events: none; /* las capas internas sí reciben eventos */
+}
+
+/* Cada imagen/layer independiente que el usuario sube */
+.creator-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: auto; /* permite click/drag en cada layer */
+}
+
+/* La imagen dentro de la capa */
+.creator-layer img {
+  max-width: 60%;
+  max-height: 60%;
+  display: block;
+}
+
+/* Cuando una capa está seleccionada (para que el usuario sepa cuál edita) */
+.creator-layer.is-selected {
+  outline: 2px dashed #7c3aed; /* morado bonito */
+  outline-offset: 4px;
 }
