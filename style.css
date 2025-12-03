@@ -2268,8 +2268,9 @@ h1, h2, h3 {
   transform: translate(-50%, -50%);
   cursor: grab;
 }
-
 .creator-layer.is-selected {
-  outline: 2px dashed #7c3aed;
-  outline-offset: 4px;
+  outline: none;
+  outline-offset: 0;
 }
+
+
