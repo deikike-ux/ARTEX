@@ -2236,3 +2236,40 @@ h1, h2, h3 {
   outline: 2px dashed #7c3aed; /* morado bonito */
   outline-offset: 4px;
 }
+/* El mockup siempre va debajo */
+.creator-mockup {
+  position: relative;
+  z-index: 1;
+}
+
+/* El color encima del mockup */
+.creator-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none; /* no bloquea clics */
+}
+
+/* Todas las capas del usuario (sus diseños) deben ir ARRIBA */
+.creator-layers {
+  position: absolute;
+  inset: 0;
+  z-index: 3 !important;
+  pointer-events: none;
+}
+
+/* Cada capa individual sí debe recibir clics/drag */
+.creator-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+}
+
+.creator-layer.is-selected {
+  outline: 2px dashed #7c3aed;
+  outline-offset: 4px;
+}
