@@ -1756,13 +1756,9 @@
           <!-- Capa de color que se recorta con la camiseta -->
           <div id="creator-tint" class="creator-tint"></div>
 
-          <!-- Diseño del usuario -->
-          <img
-            id="creator-design"
-            class="creator-design"
-            src=""
-            alt="Diseño"
-            style="display:none;"
+        <!-- Capas de diseño del usuario (múltiples imágenes) -->
+         <div id="creator-layers" class="creator-layers"></div>
+
           >
         </div>
 
@@ -1787,7 +1783,7 @@
 
           <label class="creator-field">
             <span>Sube tu imagen (PNG / JPG)</span>
-            <input id="creator-upload" type="file" accept="image/*">
+            <input id="creator-upload" type="file" accept="image/*" multiple>
           </label>
 
           <label class="creator-field">
