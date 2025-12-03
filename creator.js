@@ -249,12 +249,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mouseup", () => {
     endDrag();
   });
-
   document.addEventListener("touchmove", (e) => {
-    if (!dragging) return;
-    const touch = e.touches[0];
-    handleDragMove(touch.clientX, touch.clientY);
-  }, { passive: true });
+  // Si no estamos arrastrando una capa, no hacemos nada
+  if (!dragging || !activeLayer) return;
+
+  // Evita que la página haga scroll mientras arrastras
+  e.preventDefault();
+
+  const touch = e.touches[0];
+  handleDragMove(touch.clientX, touch.clientY);
+}, { passive: false });
 
   document.addEventListener("touchend", () => {
     endDrag();
