@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas      = document.getElementById("creator-canvas");
   const mockup      = document.getElementById("creator-mockup");
   const tint        = document.getElementById("creator-tint");
-  const design      = document.getElementById("creator-design");
+  const layersWrap  = document.getElementById("creator-layers"); // NUEVO contenedor de capas
 
   const uploadInput = document.getElementById("creator-upload");
   const colorInput  = document.getElementById("creator-color");
@@ -20,33 +20,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const addCartBtn  = document.getElementById("creator-add-cart");
 
   // Si no existe el creador en la página, salir
-  if (!canvas || !mockup || !tint || !design) {
+  if (!canvas || !mockup || !tint || !layersWrap) {
     return;
   }
 
   /* -----------------------------
-     ESTADO DEL DISEÑO
+     ESTADO DEL DISEÑO (CAPAS)
   ----------------------------- */
   let isFront   = true;
-  let posX      = 0;
-  let posY      = 0;
-  let scale     = 1;
-  let angle     = 0;
   let dragging  = false;
   let dragStartX = 0;
   let dragStartY = 0;
-  let startPosX  = 0;
-  let startPosY  = 0;
+  let activeLayer = null; // capa seleccionada actualmente
 
-  function updateTransform() {
-    design.style.transform =
-      `translate(-50%, -50%) translate(${posX}px, ${posY}px) rotate(${angle}deg) scale(${scale})`;
+  function selectLayer(layer) {
+    if (!layer) return;
+    // quitar selección previa
+    [...layersWrap.children].forEach(l => l.classList.remove("is-selected"));
+    activeLayer = layer;
+    activeLayer.classList.add("is-selected");
+
+    // actualizar sliders con el estado de esa capa
+    if (scaleInput) {
+      scaleInput.value = String(activeLayer._scale || 1);
+    }
+    if (rotateInput) {
+      rotateInput.value = String(activeLayer._angle || 0);
+    }
+    if (rotateLabel) {
+      rotateLabel.textContent = (activeLayer._angle || 0) + "°";
+    }
   }
 
-  function centerDesign() {
-    posX = 0;
-    posY = 0;
-    updateTransform();
+  function applyTransform(layer) {
+    if (!layer) return;
+    const x = layer._posX || 0;
+    const y = layer._posY || 0;
+    const s = layer._scale || 1;
+    const a = layer._angle || 0;
+
+    layer.style.transform =
+      `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${a}deg) scale(${s})`;
+  }
+
+  function centerActiveLayer() {
+    if (!activeLayer) return;
+    activeLayer._posX = 0;
+    activeLayer._posY = 0;
+    applyTransform(activeLayer);
   }
 
   /* -----------------------------
@@ -76,30 +97,84 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* -----------------------------
-     SUBIR IMAGEN
+     CREAR UNA CAPA NUEVA
+  ----------------------------- */
+  function createLayer(imgSrc) {
+    const layer = document.createElement("div");
+    layer.className = "creator-layer";
+
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.alt = "Diseño";
+    layer.appendChild(img);
+
+    // estado inicial
+    layer._posX  = 0;
+    layer._posY  = 0;
+    layer._scale = parseFloat(scaleInput?.value || "1");
+    layer._angle = parseInt(rotateInput?.value || "0", 10);
+
+    // colocar en el centro
+    applyTransform(layer);
+
+    // eventos de selección
+    layer.addEventListener("mousedown", (e) => {
+      e.stopPropagation();
+      selectLayer(layer);
+      startDrag(e.clientX, e.clientY);
+    });
+
+    layer.addEventListener("touchstart", (e) => {
+      e.stopPropagation();
+      selectLayer(layer);
+      const touch = e.touches[0];
+      startDrag(touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    layersWrap.appendChild(layer);
+    selectLayer(layer);
+  }
+
+  function startDrag(clientX, clientY) {
+    if (!activeLayer) return;
+    dragging = true;
+    dragStartX = clientX;
+    dragStartY = clientY;
+    activeLayer._startPosX = activeLayer._posX || 0;
+    activeLayer._startPosY = activeLayer._posY || 0;
+  }
+
+  function handleDragMove(clientX, clientY) {
+    if (!dragging || !activeLayer) return;
+    const dx = clientX - dragStartX;
+    const dy = clientY - dragStartY;
+    activeLayer._posX = (activeLayer._startPosX || 0) + dx;
+    activeLayer._posY = (activeLayer._startPosY || 0) + dy;
+    applyTransform(activeLayer);
+  }
+
+  function endDrag() {
+    dragging = false;
+  }
+
+  /* -----------------------------
+     SUBIR IMAGEN(ES)
   ----------------------------- */
   if (uploadInput) {
     uploadInput.addEventListener("change", (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
+      const files = e.target.files;
+      if (!files || !files.length) return;
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        design.src = reader.result;
-        design.style.display = "block";
+      [...files].forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const src = reader.result;
+          createLayer(src);
+        };
+        reader.readAsDataURL(file);
+      });
 
-        // Reiniciar estado
-        posX = 0;
-        posY = 0;
-        scale = parseFloat(scaleInput?.value || "1");
-        angle = parseInt(rotateInput?.value || "0", 10);
-
-        design.style.top  = "50%";
-        design.style.left = "50%";
-        updateTransform();
-      };
-      reader.readAsDataURL(file);
-
+      // limpiar input para permitir volver a subir las mismas si quiere
       uploadInput.value = "";
     });
   }
@@ -114,28 +189,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* -----------------------------
-     TAMAÑO
+     TAMAÑO (aplica a capa activa)
   ----------------------------- */
   if (scaleInput) {
-    scale = parseFloat(scaleInput.value || "1");
     scaleInput.addEventListener("input", () => {
-      scale = parseFloat(scaleInput.value || "1");
-      updateTransform();
+      if (!activeLayer) return;
+      const s = parseFloat(scaleInput.value || "1");
+      activeLayer._scale = s;
+      applyTransform(activeLayer);
     });
   }
 
   /* -----------------------------
-     ROTACIÓN
+     ROTACIÓN (aplica a capa activa)
   ----------------------------- */
   if (rotateInput) {
-    angle = parseInt(rotateInput.value || "0", 10);
-    if (rotateLabel) rotateLabel.textContent = angle + "°";
-
     rotateInput.addEventListener("input", () => {
-      angle = parseInt(rotateInput.value || "0", 10);
-      if (rotateLabel) rotateLabel.textContent = angle + "°";
-      updateTransform();
+      if (!activeLayer) return;
+      const a = parseInt(rotateInput.value || "0", 10);
+      activeLayer._angle = a;
+      if (rotateLabel) rotateLabel.textContent = a + "°";
+      applyTransform(activeLayer);
     });
+
+    // valor inicial
+    if (rotateLabel) {
+      const initial = parseInt(rotateInput.value || "0", 10);
+      rotateLabel.textContent = initial + "°";
+    }
   }
 
   /* -----------------------------
@@ -151,96 +232,51 @@ document.addEventListener("DOMContentLoaded", () => {
       mockup.src = isFront ? frontSrc : backSrc;
       sideToggle.textContent = isFront ? "Ver espalda" : "Ver frente";
 
-     // Esperar a que la imagen cargue antes de aplicar la máscara
-setTimeout(() => {
-  updateTintMask();
-}, 50);
-
+      setTimeout(() => {
+        updateTintMask();
+      }, 50);
     });
   }
 
   /* -----------------------------
-     DRAG DEL DISEÑO
+     DRAG GLOBAL (mouse + touch)
   ----------------------------- */
-  if (design) {
-    design.style.cursor = "grab";
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+    handleDragMove(e.clientX, e.clientY);
+  });
 
-    design.addEventListener("mousedown", (e) => {
-      if (!design.src) return;
-      dragging = true;
-      design.style.cursor = "grabbing";
-      dragStartX = e.clientX;
-      dragStartY = e.clientY;
-      startPosX  = posX;
-      startPosY  = posY;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - dragStartX;
-      const dy = e.clientY - dragStartY;
-      posX = startPosX + dx;
-      posY = startPosY + dy;
-      updateTransform();
-    });
-
-    document.addEventListener("mouseup", () => {
-      if (dragging) {
-        dragging = false;
-        design.style.cursor = "grab";
-      }
-    });
-  }
-/* -----------------------------
-   DRAG DEL DISEÑO (TOUCH)
------------------------------ */
-if (design) {
-  design.addEventListener("touchstart", (e) => {
-    if (!design.src) return;
-    dragging = true;
-
-    const touch = e.touches[0];
-    dragStartX = touch.clientX;
-    dragStartY = touch.clientY;
-    startPosX  = posX;
-    startPosY  = posY;
+  document.addEventListener("mouseup", () => {
+    endDrag();
   });
 
   document.addEventListener("touchmove", (e) => {
     if (!dragging) return;
-
     const touch = e.touches[0];
-    const dx = touch.clientX - dragStartX;
-    const dy = touch.clientY - dragStartY;
-
-    posX = startPosX + dx;
-    posY = startPosY + dy;
-
-    updateTransform();
-  });
+    handleDragMove(touch.clientX, touch.clientY);
+  }, { passive: true });
 
   document.addEventListener("touchend", () => {
-    dragging = false;
+    endDrag();
   });
-}
 
   /* -----------------------------
      BOTONES: CENTRAR / QUITAR
   ----------------------------- */
   if (centerBtn) {
     centerBtn.addEventListener("click", () => {
-      if (!design.src) {
-        alert("Primero sube un diseño.");
+      if (!activeLayer) {
+        alert("Primero sube un diseño y selecciónalo.");
         return;
       }
-      centerDesign();
+      centerActiveLayer();
     });
   }
 
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
-      design.src = "";
-      design.style.display = "none";
+      layersWrap.innerHTML = "";
+      activeLayer = null;
     });
   }
 
@@ -272,56 +308,58 @@ if (design) {
     refreshSizes();
     typeSelect.addEventListener("change", refreshSizes);
   }
-if (addCartBtn) {
-  addCartBtn.addEventListener("click", () => {
-    const type = typeSelect ? typeSelect.value : "";
-    const size = sizeSelect ? sizeSelect.value : "";
 
-    if (!type) {
-      alert("Por favor selecciona el tipo de camiseta (Normal u Oversize).");
-      return;
-    }
+  /* -----------------------------
+     AÑADIR AL CARRITO
+  ----------------------------- */
+  if (addCartBtn) {
+    addCartBtn.addEventListener("click", () => {
+      const type = typeSelect ? typeSelect.value : "";
+      const size = sizeSelect ? sizeSelect.value : "";
 
-    if (!size) {
-      alert("Por favor selecciona una talla para la camiseta.");
-      return;
-    }
+      if (!type) {
+        alert("Por favor selecciona el tipo de camiseta (Normal u Oversize).");
+        return;
+      }
 
-    const hasDesign = !!(design && design.src && design.style.display !== "none");
+      if (!size) {
+        alert("Por favor selecciona una talla para la camiseta.");
+        return;
+      }
 
-    const name = hasDesign
-      ? "Camiseta personalizada ARTEX"
-      : "Camiseta básica ARTEX";
+      const hasDesign = layersWrap && layersWrap.children.length > 0;
 
-    const price = 60000;
+      const name = hasDesign
+        ? "Camiseta personalizada ARTEX"
+        : "Camiseta básica ARTEX";
 
-    /* ================================
-       GENERAR CAPTURA DEL DISEÑO
-    ================================= */
-    const frame = document.querySelector(".creator-canvas, .shirt-frame");
-    let designPreview = "";
+      const price = 60000;
 
-    if (frame) {
-      try {
-        html2canvas(frame).then(canvas => {
-          designPreview = canvas.toDataURL("image/png");
+      /* ================================
+         GENERAR CAPTURA DEL DISEÑO
+      ================================= */
+      const frame = document.querySelector(".creator-canvas, .shirt-frame");
+      let designPreview = "";
 
-          // Añadir al carrito incluyendo la imagen del diseño
-          window.addToCart(name, price, type, size, designPreview);
-          alert("Tu diseño se añadió al carrito 💜");
-        });
-            } catch (err) {
-        console.error("Error generando imagen:", err);
+      if (frame) {
+        try {
+          html2canvas(frame).then(canvasEl => {
+            designPreview = canvasEl.toDataURL("image/png");
+
+            // Añadir al carrito incluyendo la imagen del diseño
+            window.addToCart(name, price, type, size, designPreview);
+            alert("Tu diseño se añadió al carrito 💜");
+          });
+        } catch (err) {
+          console.error("Error generando imagen:", err);
+          window.addToCart(name, price, type, size);
+          alert("Tu camiseta se añadió al carrito 💜");
+        }
+      } else {
         window.addToCart(name, price, type, size);
         alert("Tu camiseta se añadió al carrito 💜");
       }
-
-       } else {
-      window.addToCart(name, price, type, size);
-      alert("Tu camiseta se añadió al carrito 💜");
-    }
-
-  });
-}
+    });
+  }
 
 });
