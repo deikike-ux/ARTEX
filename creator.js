@@ -33,6 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let dragStartY = 0;
   let activeLayer = null; // capa seleccionada actualmente
 
+  let frontLayers = []; // Capas del frente
+  let backLayers  = []; // Capas de la espalda
+
   function selectLayer(layer) {
     if (!layer) return;
     // quitar selección previa
@@ -68,6 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
     activeLayer._posX = 0;
     activeLayer._posY = 0;
     applyTransform(activeLayer);
+  }
+  // Mostrar solo las capas del lado actual (frente o espalda)
+  function renderCurrentSideLayers() {
+    if (!layersWrap) return;
+
+    // Limpiamos el contenedor visual
+    layersWrap.innerHTML = "";
+
+    // Obtenemos la lista según el lado
+    const currentList = isFront ? frontLayers : backLayers;
+
+    // Volvemos a agregar cada capa al DOM
+    currentList.forEach((layer) => {
+      layersWrap.appendChild(layer);
+    });
+
+    // Seleccionamos la última capa de ese lado (o ninguna si está vacío)
+    if (currentList.length > 0) {
+      selectLayer(currentList[currentList.length - 1]);
+    } else {
+      activeLayer = null;
+    }
   }
 
   /* -----------------------------
@@ -123,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
       selectLayer(layer);
       startDrag(e.clientX, e.clientY);
     });
-
     layer.addEventListener("touchstart", (e) => {
       e.stopPropagation();
       selectLayer(layer);
@@ -131,9 +155,17 @@ document.addEventListener("DOMContentLoaded", () => {
       startDrag(touch.clientX, touch.clientY);
     }, { passive: true });
 
-    layersWrap.appendChild(layer);
-    selectLayer(layer);
+    // Guardamos la capa en la lista correspondiente (frente o espalda)
+    if (isFront) {
+      frontLayers.push(layer);
+    } else {
+      backLayers.push(layer);
+    }
+
+    // Mostramos solo las capas del lado actual
+    renderCurrentSideLayers();
   }
+
 
   function startDrag(clientX, clientY) {
     if (!activeLayer) return;
@@ -222,6 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
   /* -----------------------------
      FRENTE / ESPALDA
   ----------------------------- */
+    /* -----------------------------
+     FRENTE / ESPALDA
+  ----------------------------- */
   if (sideToggle) {
     sideToggle.addEventListener("click", () => {
       isFront = !isFront;
@@ -232,9 +267,13 @@ document.addEventListener("DOMContentLoaded", () => {
       mockup.src = isFront ? frontSrc : backSrc;
       sideToggle.textContent = isFront ? "Ver espalda" : "Ver frente";
 
+      // Actualizar máscara del tinte
       setTimeout(() => {
         updateTintMask();
       }, 50);
+
+      // Mostrar solo las capas del lado actual
+      renderCurrentSideLayers();
     });
   }
 
@@ -279,10 +318,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
-      layersWrap.innerHTML = "";
+      // Borramos solo las capas del lado actual
+      if (isFront) {
+        frontLayers = [];
+      } else {
+        backLayers = [];
+      }
+
+      renderCurrentSideLayers();
       activeLayer = null;
     });
   }
+
 
   /* -----------------------------
      TALLAS POR TIPO
@@ -331,7 +378,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const hasDesign = layersWrap && layersWrap.children.length > 0;
+      const hasDesign = (frontLayers.length + backLayers.length) > 0;
+
 
       const name = hasDesign
         ? "Camiseta personalizada ARTEX"
